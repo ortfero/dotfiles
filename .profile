@@ -4,22 +4,28 @@ export PAGER='less -R'
 
 if [ -z $UID ]
 then
-    UID=$(id -u)
+  UID=$(id -u)
 fi
 
-if [ -e '/sys/class/power_supply/BAT1/capacity' ]
+if [ -e '/sys/class/power_supply/BAT0/capacity' ]
 then
-    read CAPACITY </sys/class/power_supply/BAT1/capacity
-    export PS1='\[\033\[1;37m\]\A ${CAPACITY}% \w\[\033[0;39m\]\n \$ '
+  read CAPACITY </sys/class/power_supply/BAT0/capacity
+elif [ -e '/sys/class/power_supply/BAT1/capacity' ]
+then
+  read CAPACITY </sys/class/power_supply/BAT1/capacity
 elif [ -e '/sys/class/power_supply/axp20x-battery/capacity' ]
 then
-    read CAPACITY </sys/class/power_supply/axp20x-battery/capacity
-    export PS1='\[\033\[1;37m\]\A ${CAPACITY}% \w\[\033[0;39m\]\n \$ '
-elif [ -n $ZSH_VERSION ]
-then
+  read CAPACITY </sys/class/power_supply/axp20x-battery/capacity
+fi
 
-else
+if [ -z $ZSH_VERSION ]
+then
+  if [ -n $CAPACITY ]
+  then
+    export PS1='\[\033\[1;37m\]\A ${CAPACITY}% \w\[\033[0;39m\]\n \$ '
+  else
     export PS1='\[\033\[1;37m\]\A \w\[\033\[0;39m\]\n \$ '
+  fi
 fi
 
 export NNN_TMPFILE=~/.config/nnn/.lastd
@@ -66,3 +72,4 @@ then
     alias pkg-of='/usr/bin/dpkg -L'
     alias pkg-ls='apt list --installed | less'
 fi
+  
