@@ -22,9 +22,9 @@ if [ -z $ZSH_VERSION ]
 then
   if [ -n $CAPACITY ]
   then
-    export PS1='\[\033\[1;37m\]\t ${CAPACITY}% \w\[\033[0;39m\]\n \$ '
+    export PS1='\[\033[1;37m\]\A ${CAPACITY}% \w\[\033[0;39m\]\n \$ '
   else
-    export PS1='\[\033\[1;37m\]\t \w\[\033\[0;39m\]\n \$ '
+    export PS1='\[\033[1;37m\]\A \w\[\033\[0;39m\]\n \$ '
   fi
 fi
 
