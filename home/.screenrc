@@ -1,0 +1,4 @@
+startup_message off
+shell -ash
+defscrollbback 10000
+altscreen on

@@ -1,0 +1,31 @@
+set autoindent
+set constantshow
+set indicator
+set linenumbers
+set minibar
+set multibuffer
+set nohelp
+set smarthome
+set tabsize 2
+set tabstospaces
+set unix
+set zap
+bind ^B chopwordleft main
+bind ^C copy main
+bind ^D suspend main
+bind ^F whereis all
+bind ^H help all
+bind ^H exit help
+bind ^J nextword main
+bind ^L gotoline main
+bind ^N findnext all
+bind ^O insert main
+bind ^P findprevious all
+bind ^Q exit all
+bind ^R replace main
+bind ^S savefile main
+bind ^W writeout main
+bind ^X cut main
+bind ^Y redo main
+bind ^Z undo main
+bind ^` mark main
