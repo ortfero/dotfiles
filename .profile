@@ -28,6 +28,12 @@ alias grep='grep --color'
 alias nnn='nnn; . $NNN_TMPFILE'
 alias emacs='emacs -nw'
 
+alias sta='git status'
+alias add='git add'
+alias ci='git commit'
+alias push='git push'
+alias pull='git pull'
+
 if [ -e '/usr/bin/apk' ]
 then
     alias pkg-up='doas apk update; doas apk upgrade'
