@@ -44,10 +44,10 @@ then
     alias pkg-ls='apk list -I'
 elif [ -e '/usr/bin/apt' ]
 then
-    alias pkg-up='doas apt update; doas apt upgrade; doas apt-file update'
+    alias pkg-up='doas apt update; doas apt upgrade'
     alias pkg-for='apt search --names-only'
     alias pkg-add='doas apt install'
-    alias pkg-rm='doas apt remove'
+    alias pkg-rm='doas apt remove --purge'
     alias pkg-of='/usr/bin/dpkg -L'
     alias pkg-ls='apt list --installed'
 fi
