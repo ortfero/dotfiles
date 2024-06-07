@@ -5,11 +5,11 @@ export UID=$(id -u)
 export EDITOR=nano
 export PAGER='less -R'
 
-if [ -e "/sys/class/power_supply/BAT1/capacity" ]
+if [ -e '/sys/class/power_supply/BAT1/capacity' ]
 then
     read CAPACITY </sys/class/power_supply/BAT1/capacity
     export PS1='\A ${CAPACITY}% \[\033\[1;37m\]\w\[\033[0;39m\]\n \$ '
-elif [ -e "/sys/class/power_supply/axp20x-battery/capacity" ]
+elif [ -e '/sys/class/power_supply/axp20x-battery/capacity' ]
 then
     read CAPACITY </sys/class/power_supply/axp20x-battery/capacity
     export PS1='\A ${CAPACITY}% \[\033\[1;37m\]\w\[\033[0;39m\]\n \$ '
@@ -27,9 +27,21 @@ alias less='less -R'
 alias grep='grep --color'
 alias nnn='nnn; . $NNN_TMPFILE'
 alias emacs='emacs -nw'
-alias pkg-up='doas apk update; doas apk upgrade'
-alias pkg-for='apk search'
-alias pkg-add='doas apk add'
-alias pkg-rm='doas apk del'
-alias pkg-of='apk info'
-alias pkg-ls='apk list -I'
+
+if [ -e '/usr/bin/apk' ]
+then
+    alias pkg-up='doas apk update; doas apk upgrade'
+    alias pkg-for='apk search'
+    alias pkg-add='doas apk add'
+    alias pkg-rm='doas apk del'
+    alias pkg-of='apk info -L'
+    alias pkg-ls='apk list -I'
+elif [ -e '/usr/bin/apt' ]
+then
+    alias pkg-up='doas apt update; doas apt upgrade; doas apt-file update'
+    alias pkg-for='apt search --names-only'
+    alias pkg-add='doas apt install'
+    alias pkg-rm='doas apt remove'
+    alias pkg-of='/usr/bin/dpkg -L'
+    alias pkg-ls='apt list --installed'
+fi
