@@ -41,7 +41,7 @@ then
     alias pkg-add='doas apk add'
     alias pkg-rm='doas apk del'
     alias pkg-of='apk info -L'
-    alias pkg-ls='apk list -I'
+    alias pkg-ls='apk list -I | less'
 elif [ -e '/usr/bin/apt' ]
 then
     alias pkg-up='doas apt update; doas apt upgrade'
@@ -49,5 +49,5 @@ then
     alias pkg-add='doas apt install'
     alias pkg-rm='doas apt remove --purge'
     alias pkg-of='/usr/bin/dpkg -L'
-    alias pkg-ls='apt list --installed'
+    alias pkg-ls='apt list --installed | less'
 fi
