@@ -24,6 +24,7 @@ bind ^P findprevious all
 bind ^Q exit all
 bind ^R replace main
 bind ^S savefile main
+bind ^V paste main
 bind ^W writeout main
 bind ^X cut main
 bind ^Y redo main
