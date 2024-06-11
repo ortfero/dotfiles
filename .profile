@@ -1,9 +1,11 @@
-
 export LC_CTYPE=en_US.UTF-8
-export UID=$(id -u)
-
 export EDITOR=nano
 export PAGER='less -R'
+
+if [ -z $UID ]
+then
+    UID=$(id -u)
+fi
 
 if [ -e '/sys/class/power_supply/BAT1/capacity' ]
 then
@@ -13,9 +15,13 @@ elif [ -e '/sys/class/power_supply/axp20x-battery/capacity' ]
 then
     read CAPACITY </sys/class/power_supply/axp20x-battery/capacity
     export PS1='\[\033\[1;37m\]\A ${CAPACITY}% \w\[\033[0;39m\]\n \$ '
+elif [ -n $ZSH_VERSION ]
+then
+
 else
-    export PS1='\[\033\[1;37m\]\A \w\[\033[0;39m\]\n \$ '
+    export PS1='\[\033\[1;37m\]\A \w\[\033\[0;39m\]\n \$ '
 fi
+
 export NNN_TMPFILE=~/.config/nnn/.lastd
 
 alias ls='ls --color'
@@ -31,7 +37,7 @@ alias emacs='emacs -nw'
 
 alias sta='git status'
 alias add='git add'
-alias ci='git commit'
+alias ci='git commit -m'
 alias push='git push'
 alias pull='git pull'
 
@@ -43,6 +49,14 @@ then
     alias pkg-rm='doas apk del'
     alias pkg-of='apk info -L'
     alias pkg-ls='apk list -I | less'
+elif [ -e '/opt/homebrew/bin/brew' ]
+then
+    alias pkg-up='brew update; brew upgrade'
+    alias pkg-for='brew search'
+    alias pkg-add='brew install'
+    alias pkg-rm='brew rm'
+    alias pkg-of='brew ls'
+    alias pkg-ls='brew ls'
 elif [ -e '/usr/bin/apt' ]
 then
     alias pkg-up='doas apt update; doas apt upgrade'
