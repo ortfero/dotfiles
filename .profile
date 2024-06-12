@@ -1,10 +1,16 @@
 export LC_CTYPE=en_US.UTF-8
 export EDITOR=nano
+export VISUAL=nano
 export PAGER='less -R'
 
 if [ -z $UID ]
 then
   UID=$(id -u)
+fi
+
+if [ -e '/opt/homebrew/bin/brew' ]
+then
+  . $(/opt/homebrew/bin/brew shellenv)
 fi
 
 if [ -e '/sys/class/power_supply/BAT0/capacity' ]
@@ -18,13 +24,14 @@ then
   read CAPACITY </sys/class/power_supply/axp20x-battery/capacity
 fi
 
-if [ -z $ZSH_VERSION ]
+
+if [ -z "$ZSH_VERSION" ]
 then
-  if [ -n $CAPACITY ]
+  if [ -n "$CAPACITY" ]
   then
     export PS1='\[\033[1;37m\]\A ${CAPACITY}% \w\[\033[0;39m\]\n \$ '
   else
-    export PS1='\[\033[1;37m\]\A \w\[\033\[0;39m\]\n \$ '
+    export PS1='\[\033[1;37m\]\A \w\[\033[0;39m\]\n \$ '
   fi
 fi
 
