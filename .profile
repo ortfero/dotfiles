@@ -11,6 +11,8 @@ fi
 if [ -e '/opt/homebrew/bin/brew' ]
 then
   . $(/opt/homebrew/bin/brew shellenv)
+else
+  alias free='free -h'
 fi
 
 if [ -e '/sys/class/power_supply/BAT0/capacity' ]
@@ -79,4 +81,3 @@ then
     alias pkg-of='/usr/bin/dpkg -L'
     alias pkg-ls='apt list --installed | less'
 fi
-  
