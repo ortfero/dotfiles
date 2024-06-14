@@ -15,27 +15,31 @@ else
   alias free='free -h'
 fi
 
-if [ -e '/sys/class/power_supply/BAT0/capacity' ]
-then
-  read CAPACITY </sys/class/power_supply/BAT0/capacity
-elif [ -e '/sys/class/power_supply/BAT1/capacity' ]
-then
-  read CAPACITY </sys/class/power_supply/BAT1/capacity
-elif [ -e '/sys/class/power_supply/axp20x-battery/capacity' ]
-then
-  read CAPACITY </sys/class/power_supply/axp20x-battery/capacity
-fi
 
+build_prompt() {
+  if [ -e '/sys/class/power_supply/BAT0/capacity' ]
+  then
+    read CAPACITY </sys/class/power_supply/BAT0/capacity
+  elif [ -e '/sys/class/power_supply/BAT1/capacity' ]
+  then
+    read CAPACITY </sys/class/power_supply/BAT1/capacity
+  elif [ -e '/sys/class/power_supply/axp20x-battery/capacity' ]
+  then
+    read CAPACITY </sys/class/power_supply/axp20x-battery/capacity
+  fi
+  if [ -n "$CAPACITY" ]
+  then
+    echo -n '\[\033[1;37m\]\A ${CAPACITY}% \w\[\033[0;39m\]\n \$ '
+  else
+    echo -n '\[\033[1;37m\]\A \w\[\033[0;39m\]\n \$ '
+  fi
+}
 
 if [ -z "$ZSH_VERSION" ]
 then
-  if [ -n "$CAPACITY" ]
-  then
-    export PS1='\[\033[1;37m\]\A ${CAPACITY}% \w\[\033[0;39m\]\n \$ '
-  else
-    export PS1='\[\033[1;37m\]\A \w\[\033[0;39m\]\n \$ '
-  fi
+  export PS1='$(build_prompt)'
 fi
+
 
 export NNN_TMPFILE=~/.config/nnn/.lastd
 
