@@ -37,7 +37,7 @@ build_prompt() {
 
 if [ -z "$ZSH_VERSION" ]
 then
-  export PS1='$(build_prompt)'
+  export PS1="$(build_prompt)"
 fi
 
 
