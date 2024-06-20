@@ -10,11 +10,16 @@ fi
 
 if [ -e '/opt/homebrew/bin/brew' ]
 then
-  . $(/opt/homebrew/bin/brew shellenv)
+  export HOMEBREW_PREFIX=/opt/homebrew
+  if [[ ":$PATH:" != *":/opt/homebrew/sbin:"* ]]
+  then 
+    export PATH="/opt/homebrew/sbin:/opt/homebrew/bin:$PATH"
+  fi
+  export MANPATH=/opt/homebrew/share/man
+  export INFOPATH=/opt/homebrew/share/info
 else
   alias free='free -h'
 fi
-
 
 build_prompt() {
   if [ -e '/sys/class/power_supply/BAT0/capacity' ]
