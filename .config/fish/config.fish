@@ -16,7 +16,7 @@ if status is-interactive
   abbr push 'git push'
   abbr pull 'git pull'
 
-  if test -e '/usr/bin/apk'
+  if test -e '/sbin/apk'
     alias pkg-up='doas apk update; doas apk upgrade'
     alias pkg-for='apk search'
     alias pkg-add='doas apk add'
