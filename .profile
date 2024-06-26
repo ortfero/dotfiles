@@ -12,15 +12,17 @@ fi
 if [ -e '/opt/homebrew/bin/brew' ]
 then
   export HOMEBREW_PREFIX=/opt/homebrew
-  if [[ ":$PATH:" != *":/opt/homebrew/sbin:"* ]]
-  then 
-    export PATH="/opt/homebrew/sbin:/opt/homebrew/bin:$PATH"
-  fi
   export MANPATH=/opt/homebrew/share/man
   export INFOPATH=/opt/homebrew/share/info
 fi
 
-exec fish --login
+if [ -e '/opt/homebrew/bin/fish' ]
+then
+  exec /opt/homebrew/bin/fish --login
+elif [ -e '/usr/bin/fish' ]
+then
+  exec /usr/bin/fish --login
+fi
 
 
 #build_prompt() {
