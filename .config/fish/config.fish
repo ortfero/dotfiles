@@ -7,7 +7,7 @@ if status is-interactive
   alias bc='bc -l'
   alias less='less -R'
   alias grep='grep --color'
-  alias nnn='nnn; . $NNN_TMPFILE'
+  alias nnn='nnn; . $NNN'
   alias emacs='emacs -nw'
 
   abbr sta 'git status'
@@ -23,6 +23,7 @@ if status is-interactive
     alias pkg-rm='doas apk del'
     alias pkg-of='apk info -L'
     alias pkg-ls='apk list -I | less'
+    alias free='free -h'
   else if test -e '/opt/homebrew/bin/brew'
     alias pkg-up='brew update; brew upgrade'
     alias pkg-for='brew search'
@@ -37,6 +38,7 @@ if status is-interactive
     alias pkg-rm='doas apt remove --purge'
     alias pkg-of='/usr/bin/dpkg -L'
     alias pkg-ls='apt list --installed | less'
+    alias free='free -h'
   end
 
   zoxide init fish | source
