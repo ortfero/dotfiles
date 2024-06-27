@@ -41,6 +41,10 @@ if status is-interactive
     alias free='free -h'
   end
 
+  if test -e '/sys/class/power_supply/axp20x-battery/capacity'
+    alias batt='cat /sys/class/power_supply/axp20x-battery/capacity'
+  end
+
   zoxide init fish | source
 
 end # status is-interactive
