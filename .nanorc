@@ -10,6 +10,7 @@ set tabsize 2
 set tabstospaces
 set unix
 set zap
+set softwrap
 bind ^B chopwordleft main
 bind ^C copy main
 bind ^D suspend main
