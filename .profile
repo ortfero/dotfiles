@@ -22,6 +22,9 @@ then
 elif [ -e '/usr/bin/fish' ]
 then
   exec /usr/bin/fish --login
+elif [ -e '/data/data/com.termux/files/usr/bin/fish' ]
+then
+  exec /data/data/com.termux/files/usr/bin/fish --login
 fi
 
 

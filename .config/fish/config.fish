@@ -23,6 +23,7 @@ if status is-interactive
     alias pkg-rm='doas apk del'
     alias pkg-of='apk info -L'
     alias pkg-ls='apk list -I | less'
+    alias free='free -h'
   else if test -e '/opt/homebrew/bin/brew'
     alias pkg-up='brew update; brew upgrade'
     alias pkg-for='brew search'
@@ -37,6 +38,11 @@ if status is-interactive
     alias pkg-rm='doas apt remove --purge'
     alias pkg-of='/usr/bin/dpkg -L'
     alias pkg-ls='apt list --installed | less'
+    alias free='free -h'
+  end
+
+  if test -e '/sys/class/power_supply/axp20x-battery/capacity'
+    alias batt='cat /sys/class/power_supply/axp20x-battery/capacity'
   end
 
   zoxide init fish | source
