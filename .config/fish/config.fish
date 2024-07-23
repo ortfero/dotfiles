@@ -7,7 +7,7 @@ if status is-interactive
   alias bc='bc -l'
   alias less='less -R'
   alias grep='grep --color'
-  alias nnn='nnn; . $NNN_TMPFILE'
+  alias n='nnn; . $NNN_TMPFILE'
   alias emacs='emacs -nw'
 
   abbr sta 'git status'
