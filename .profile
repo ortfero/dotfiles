@@ -1,6 +1,6 @@
 export LC_CTYPE=en_US.UTF-8
-export EDITOR=nano
-export VISUAL=nano
+export EDITOR=dte
+export VISUAL=dte
 export PAGER='less -R'
 export NNN_TMPFILE=~/.config/nnn/.lastd
 
