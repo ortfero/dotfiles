@@ -43,13 +43,15 @@
 (use-package doom-themes
   :init (load-theme 'doom-gruvbox t))
 
-(add-hook 'lisp-mode-hook
-	  (lambda ()
-	    (setq lisp-indent-offset 2)
-	    (setq lisp-body-indent 2)))
+(add-hook
+ 'lisp-mode-hook
+ (lambda ()
+   (setq lisp-indent-offset 2)
+   (setq lisp-body-indent 2)))
 
-(add-hook 'c-mode-hook
-	  (lambda ()
-	    (setq c-basic-offset 2)))
+(add-hook
+ 'c-mode-hook
+ (lambda ()
+   (setq c-basic-offset 2)))
 
 (use-package magit)
