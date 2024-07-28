@@ -33,10 +33,11 @@
 
 ; (global-hl-line-mode 1)
 
-(global-set-key (kbd "<home>") 'beginning-of-line-text)
-(global-set-key (kbd "<end>") 'end-of-buffer)
-(global-set-key [C-home] 'beginning-of-buffer)
-(global-set-key [C-end] 'end-of-buffer)
+(global-set-key [C-left] 'beginning-of-line-text)
+(global-set-key [C-right] 'end-of-line)
+(global-set-key [C-up] 'scroll-down-command)
+(global-set-key [C-down] 'scroll-up-command)
+
 
 (setq make-backup-files nil)
 
