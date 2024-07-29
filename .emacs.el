@@ -52,3 +52,10 @@
    (setq c-basic-offset 2)))
 
 (use-package magit)
+
+(use-package dired
+  :ensure nil
+  :commands (dired dired-jump)
+  :bind (("C-x C-j" . dired-jump)))
+
+(cua-mode t)
