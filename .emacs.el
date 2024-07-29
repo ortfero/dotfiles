@@ -58,4 +58,5 @@
   :commands (dired dired-jump)
   :bind (("C-x C-j" . dired-jump)))
 
-(cua-mode t)
+(use-package wakib-keys)
+(wakib-keys 1)
