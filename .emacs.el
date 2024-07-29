@@ -32,8 +32,8 @@
 	      (display-line-numbers-mode 0))))
 
 (global-hl-line-mode 1)
+(global-visual-line-mode t)
 
-(global-set-key [home] 'beginning-of-line-text)
 
 (setq make-backup-files nil)
 
@@ -60,3 +60,7 @@
 
 (use-package wakib-keys)
 (wakib-keys 1)
+
+(global-set-key [home] 'beginning-of-line-text)
+
+(use-package dart-mode)
