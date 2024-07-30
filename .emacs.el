@@ -31,12 +31,8 @@
 	    (lambda ()
 	      (display-line-numbers-mode 0))))
 
-; (global-hl-line-mode 1)
-
-(global-set-key [C-left] 'beginning-of-line-text)
-(global-set-key [C-right] 'end-of-line)
-(global-set-key [C-up] 'scroll-down-command)
-(global-set-key [C-down] 'scroll-up-command)
+(global-hl-line-mode 1)
+(global-visual-line-mode t)
 
 
 (setq make-backup-files nil)
@@ -56,3 +52,15 @@
    (setq c-basic-offset 2)))
 
 (use-package magit)
+
+(use-package dired
+  :ensure nil
+  :commands (dired dired-jump)
+  :bind (("C-x C-j" . dired-jump)))
+
+(use-package wakib-keys)
+(wakib-keys 1)
+
+(global-set-key [home] 'beginning-of-line-text)
+
+(use-package dart-mode)
