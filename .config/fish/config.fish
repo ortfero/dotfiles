@@ -8,6 +8,7 @@ if status is-interactive
     alias less='less -R'
     alias grep='grep --color'
     alias n='nnn; . $NNN_TMPFILE'
+    alias tree='tree -d'
     alias emacs='emacs -nw'
 
     abbr sta 'git status'
