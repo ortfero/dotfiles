@@ -10,7 +10,7 @@ if status is-interactive
     alias n='nnn; . $NNN_TMPFILE'
     alias tree='tree -d'
     alias emacs='emacs -nw'
-    alias gitui='eval (ssh-agent -c) && gitui'
+    alias gitui='eval (ssh-agent -c) && ssh-add ~/.ssh/id_ed25519 && gitui'
 
     abbr sta 'git status'
     abbr add 'git add'
