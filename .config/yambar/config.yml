@@ -10,17 +10,10 @@ bar:
   border:
     width: 1
     color: 999999cc
-    margin: 5
-    top-margin: 0
+    bottom-margin: 5
 
   left:
   
-    - label:
-        content:
-          string:
-            text: "[^_^]"
-            on-click: doas /sbin/poweroff
-          
     - i3:
         sort: ascending
         strip-workspace-numbers: true
