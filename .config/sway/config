@@ -90,7 +90,11 @@ input "1:1:AT_Translated_Set_2_keyboard" {
 
     bindsym $mod+Escape exec swaylock & loginctl suspend
     bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
-    bindsym XF86MonBrightnessUp exec brightnessctl set +5%
+    bindsym XF86MonBrightnessUp exec brightnessctl set 5%+
+    bindsym XF86AudioRaiseVolume exec amixer -q sset Master 5%+
+    bindsym XF86AudioLowerVolume exec amixer -q sset Master 5%-
+    bindsym XF86AudioMute exec amixer -q sset Master toggle
+    
 #
 # Moving around:
 #
