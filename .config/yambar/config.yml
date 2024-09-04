@@ -14,7 +14,13 @@ bar:
     top-margin: 0
 
   left:
-
+  
+    - label:
+        content:
+          string:
+            text: "[^_^]"
+            on-click: doas /sbin/poweroff
+          
     - i3:
         sort: ascending
         strip-workspace-numbers: true
@@ -63,9 +69,9 @@ bar:
         name: BAT1
         poll-interval: 30000
         content:
-          - string: {text: "bat:{capacity}%"}
+          string: {text: "bat:{capacity}%"}
           
     - clock:
         content:
-          - string: {text: "{time}"}
+          string: {text: "{time}"}
 
