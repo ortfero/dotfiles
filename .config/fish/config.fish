@@ -47,3 +47,9 @@ if status is-interactive
     end
 
 end # status is-interactive
+
+if status is-login
+    if test (tty) = /dev/tty1
+        dbus-run-session -- sway
+    end
+end
