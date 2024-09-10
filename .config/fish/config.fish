@@ -1,17 +1,17 @@
 if status is-interactive
-    alias ls 'command ls --color'
-    alias ll 'command ls -l --color'
-    alias la 'command ls -a --color'
-    alias rm 'command rm -f'
-    alias df 'command df -Th'
-    alias bc 'command bc -l'
-    alias less 'command less -R'
-    alias grep 'command grep --color'
+    alias ls '/bin/ls --color'
+    alias ll '/bin/ls -l --color'
+    alias la '/bin/ls -a --color'
+    alias rm '/bin/rm -f'
+    alias df '/bin/df -Th'
+    alias bc '/usr/bin/bc -l'
+    alias less '/usr/bin/less -R'
+    alias grep '/bin/grep --color'
     alias n 'nnn; . $NNN_TMPFILE'
-    alias tree 'command tree -d'
-    alias emacs 'command emacs -nw'
-    alias gitui 'eval (ssh-agent -c) && ssh-add ~/.ssh/id_ed25519 && command gitui'
-    alias rcp 'rclone copy --progress'
+    alias tree '/usr/bin/tree -d'
+    alias emacs '/usr/bin/emacs -nw'
+    alias gitui 'eval (ssh-agent -c) && ssh-add ~/.ssh/id_ed25519 && /usr/bin/gitui'
+    alias rcp '/usr/bin/rclone copy --progress'
 
     abbr sta 'git status'
     abbr add 'git add'
@@ -47,6 +47,8 @@ if status is-interactive
     if test -e /sys/class/power_supply/axp20x-battery/capacity
         alias batt='cat /sys/class/power_supply/axp20x-battery/capacity'
     end
+
+    zoxide init fish | source
 
 end # status is-interactive
 
