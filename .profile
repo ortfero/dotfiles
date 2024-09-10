@@ -9,6 +9,11 @@ then
   UID=$(id -u)
 fi
 
+if [ -d "$HOME/go/bin" ]
+then
+  PATH="$PATH:$HOME/go/bin"
+fi
+
 if [ -e '/opt/homebrew/bin/brew' ]
 then
   export HOMEBREW_PREFIX=/opt/homebrew
