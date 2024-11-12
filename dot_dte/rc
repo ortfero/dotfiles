@@ -1,0 +1,7 @@
+set select-cursor-char false
+set show-line-numbers true
+set emulate-tab true
+set expand-tab true
+set indent-width 2
+set tab-width 2
+

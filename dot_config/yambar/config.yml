@@ -1,0 +1,70 @@
+bar:
+  height: 32
+  location: top
+  spacing: 10
+  margin: 7
+  font: JetBrains Mono:style=Bold:pixelsize=16
+  background: 111111cc
+  foreground: eeeeeeff
+
+  border:
+    width: 1
+    color: 999999cc
+    bottom-margin: 5
+
+  left:
+  
+    - i3:
+        sort: ascending
+        strip-workspace-numbers: true
+        content:
+          "":
+            map:
+              default: {string: {text: "{name}  "}}
+              conditions:
+                state == focused: {string: {text: "{name}*  "}}
+          current:
+            string:
+              text: "| {title}"
+              max: 64
+
+  right:
+
+    - sway-xkb:
+        identifiers:
+          - 1:1:AT_Translated_Set_2_keyboard
+        content:
+          - string: {text: "{layout}"}
+
+    - network:
+        content:
+          map:
+            conditions:
+              name == "wlan0":
+                string: {text: "net:{quality}%"}
+              ipv4 == "":
+                string: {text: "net:{state}"}
+  
+    - cpu:
+        poll-interval: 2500
+        content:
+          map:
+            conditions:
+              id < 0:
+                - string: {text: "cpu:{cpu}%"}
+
+    - mem:
+        poll-interval: 2500
+        content:
+          - string: {text: "mem:{percent_used}%"}
+
+    - battery:
+        name: BAT1
+        poll-interval: 30000
+        content:
+          string: {text: "bat:{capacity}%"}
+          
+    - clock:
+        content:
+          string: {text: "{time}"}
+

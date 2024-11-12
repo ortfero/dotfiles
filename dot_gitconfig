@@ -1,0 +1,14 @@
+[user]
+  name = Andrei Ilin
+  email = ortfero@gmail.com
+
+[core]
+  autocrlf = input
+
+[init]
+  defaultBranch = main
+
+[pull]
+  rebase = false
+[safe]
+	directory = /storage/emulated/0/Documents/gmi-notes
