@@ -1,3 +1,22 @@
+set -x LC_CTYPE en_US.UTF-8
+set -x EDITOR dte
+set -x VISUAL dte
+set -x PAGER less -R
+
+if test -z $UID
+  set -x UID (id -u)
+end
+
+if test -e ~/go/bin
+  fish_add_path ~/go/bin
+end
+
+if test -e /opt/homebrew/bin/brew
+  set -x HOMEBREW_PREFIX /opt/homebrew
+  set -x MANPATH /opt/homebrew/share/man
+  set -x INFOMATH /opt/homebrew/share/info
+end
+
 if status is-interactive
     alias ls '/bin/ls --color'
     alias ll '/bin/ls -l --color'
