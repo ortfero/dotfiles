@@ -27,7 +27,11 @@ if status is-interactive
     alias less '/usr/bin/less -R'
     alias grep '/bin/grep --color'
     alias n 'nnn; . $NNN_TMPFILE'
-    alias tree '/usr/bin/tree -d'
+
+    function tree
+      command tree -d
+    end
+    
     alias emacs '/usr/bin/emacs -nw'
     alias gitui 'eval (ssh-agent -c) && ssh-add ~/.ssh/id_ed25519 && /usr/bin/gitui'
     alias rcp '/usr/bin/rclone copy --progress'
