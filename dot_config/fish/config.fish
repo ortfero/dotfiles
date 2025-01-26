@@ -18,6 +18,7 @@ if test -e /opt/homebrew/bin/brew
 end
 
 if status is-interactive
+  set fish_greeting
     alias ls '/bin/ls --color'
     alias ll '/bin/ls -l --color'
     alias la '/bin/ls -a --color'
