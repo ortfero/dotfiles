@@ -4,4 +4,6 @@ set emulate-tab true
 set expand-tab true
 set indent-width 2
 set tab-width 2
+bind ^C "copy -b"
+bind ^V "paste -mc"
 
