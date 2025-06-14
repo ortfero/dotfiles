@@ -1,47 +1,96 @@
 set -x LC_CTYPE en_US.UTF-8
-set -x EDITOR dte
-set -x VISUAL dte
+set -x EDITOR hx
+set -x VISUAL hx
 set -x PAGER less -R
 
+set -x FT_LOCAL_ENV true
+
 if test -z $UID
-  set -x UID (id -u)
+    set -x UID (id -u)
+end
+
+if test -e ~/bin
+    fish_add_path -g ~/bin
 end
 
 if test -e ~/go/bin
-  fish_add_path ~/go/bin
+    fish_add_path -g ~/go/bin
 end
 
 if test -e /opt/homebrew/bin/brew
-  set -x HOMEBREW_PREFIX /opt/homebrew
-  set -x MANPATH /opt/homebrew/share/man
-  set -x INFOMATH /opt/homebrew/share/info
+    fish_add_path -g /opt/homebrew/bin
+    set -x HOMEBREW_PREFIX /opt/homebrew
+    set -x MANPATH /opt/homebrew/share/man
+    set -x INFOMATH /opt/homebrew/share/info
 end
 
 if status is-interactive
-  set fish_greeting
-    alias ls '/bin/ls --color'
-    alias ll '/bin/ls -l --color'
-    alias la '/bin/ls -a --color'
-    alias rm '/bin/rm -f'
-    alias df '/bin/df -Th'
-    alias bc '/usr/bin/bc -l'
-    alias less '/usr/bin/less -R'
-    alias grep '/bin/grep --color'
+
+    set fish_greeting
+
+    alias ll 'ls -l --color'
+    alias la 'ls -a --color'
     alias n 'nnn; . $NNN_TMPFILE'
 
-    function tree
-      command tree -d
-    end
-    
-    alias emacs '/usr/bin/emacs -nw'
-    alias gitui 'eval (ssh-agent -c) && ssh-add ~/.ssh/id_ed25519 && /usr/bin/gitui'
-    alias rcp '/usr/bin/rclone copy --progress'
-
+    abbr rcp '/usr/bin/rclone copy --progress'
     abbr sta 'git status'
     abbr add 'git add'
     abbr ci 'git commit -m'
-    abbr push 'git push'
+    abbr push 'git push origin'
+    abbr pushu 'git push -u origin'
+    abbr fetch 'git fetch'
     abbr pull 'git pull'
+    abbr restore 'git restore .'
+    abbr reset 'git reset --hard'
+    abbr clean 'git clean -fd'
+    abbr branch 'git branch'
+    abbr co 'git checkout'
+
+    function ls
+        command ls --color $argv
+    end
+
+    function rm
+        command rm -f $argv
+    end
+
+    function df
+        command df -Th $argv
+    end
+
+    function bc
+        command bc -l
+    end
+
+    function less
+        command less -R $argv
+    end
+
+    function grep
+        command grep --color $argv
+    end
+
+    function tree
+        command tree -d $argv
+    end
+
+    function emacs
+        command emacs -nw $argv
+    end
+
+    function merge
+        git checkout master
+        git pull
+        git checkout $argv
+        git merge master
+    end
+
+    function rebase
+        git checkout master
+        git pull
+        git checkout $argv
+        git rebase master
+    end
 
     if test -e /sbin/apk
         alias pkg-up='doas apk update; doas apk upgrade'
@@ -80,4 +129,4 @@ if status is-login
     if test (tty) = /dev/tty1
         dbus-run-session -- sway
     end
-end
+end # status is-login
