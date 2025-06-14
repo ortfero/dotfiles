@@ -1,0 +1,25 @@
+#!/usr/bin/env janet
+
+(import sh)
+
+(defn usage []
+	(print "Usage: gist <name>")
+	(os/exit 0))
+
+(defn die [& xs]
+	(apply print xs)
+	(os/exit 1))
+
+(defn main [& argv]
+	(when (not= 2 (length argv)) (usage))
+	(def name (in argv 1))
+	(def filter (string name "$"))
+	(def line (sh/$< gh gist list --limit 1 --filter ,filter))
+	(when (empty? line)
+		(die "gist " name " is not found"))
+	(def splitted (string/split "\t" line))
+	(def id (get splitted 0 ""))
+	(when (empty? id)
+		(die "can not parse git id from: " line))
+	(sh/$ gh gist view ,id))
+	
