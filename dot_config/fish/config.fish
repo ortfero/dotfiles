@@ -12,13 +12,16 @@ end
 if test -e ~/bin
     fish_add_path -g ~/bin
 end
-
 if test -e ~/go/bin
     fish_add_path -g ~/go/bin
+end
+if test -e ~/.local/bin
+    fish_add_path -g ~/.local/bin
 end
 
 if test -e /opt/homebrew/bin/brew
     fish_add_path -g /opt/homebrew/bin
+    fish_add_path -g /opt/homebrew/Cellar/postgresql@17/17.6/bin
     set -x HOMEBREW_PREFIX /opt/homebrew
     set -x MANPATH /opt/homebrew/share/man
     set -x INFOMATH /opt/homebrew/share/info
