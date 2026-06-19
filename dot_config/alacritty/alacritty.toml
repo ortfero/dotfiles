@@ -1,0 +1,20 @@
+[general]
+import = [
+  "~/.config/alacritty/themes/themes/seashells.toml"
+]
+
+[font]
+normal = {family = "Hermit", style = "Regular"}
+size = 14
+
+[window]
+option_as_alt = "Both"
+
+[keyboard]
+bindings = [
+  { key = "Left", mods = "Alt", chars = "\u001b[1;5D" },
+  { key = "Right", mods = "Alt", chars = "\u001b[1;5C" },
+  { key = "Tab", mods = "Control", chars = "\u001b9" },
+  { key = "Tab", mods = "Control|Shift", chars = "\u001b0" },
+  { key = "/", mods = "Control", chars = "\u001f" }
+]
