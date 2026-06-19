@@ -1,0 +1,52 @@
+# editing
+set afterends
+set jumpyscrolling
+set tabstospaces
+set tabsize 2
+set autoindent
+set smarthome
+set nonewlines
+set trimblanks
+set softwrap
+set atblanks
+set zap # erase the marked region instead of single character
+
+# editor
+set nohelp
+set linenumbers
+set indicator
+set minibar
+set constantshow
+set multibuffer
+
+syntax "default"
+color white "."
+comment "#"
+
+syntax cpp "\.(cpp|hpp)$"
+color white "."
+comment "//"
+
+# bindings
+bind ^c copy main
+bind ^x cut main
+bind ^v paste main
+bind ^a "{firstline}{mark}{lastline}" main
+bind ^q exit main
+bind ^s savefile main
+bind ^o "{insert}{browser}" main
+bind ^n "{insert}{enter}" main
+bind ^f whereis main
+bind ^r replace main
+bind m-f findnext main
+bind m-b findprevious main
+bind ^g gotoline main
+bind ^z undo main
+bind ^y redo main
+bind m-/ comment main
+bind m-9 nextbuf main
+bind m-0 prevbuf main
+bind m-c cycle main
+bind m-, prevblock main
+bind m-. nextblock main
+bind m-a anchor main # alt+pgdn, alt+pgup
